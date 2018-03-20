@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">Dialog</string>
+    <string-array name="WeiboType">
+        <item>最新</item>
+        <item>最热</item>
+        <item>店长说</item>
+        <item>大咖秀</item>
+    </string-array>
+</resources>

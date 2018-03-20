@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!--windowNoTiFilterDialogStyle-->
+    <style name="TopToBottomDialogStyle" parent="@android:style/Theme.Dialog">
+        <item name="android:windowFrame">@null</item>
+        <item name="android:windowNoTitle">true</item>
+        <item name="android:windowBackground">@color/transparent_half</item>
+        <item name="android:windowIsFloating">false</item>
+        <item name="android:windowFullscreen">true</item>
+        <item name="android:windowCloseOnTouchOutside">true</item>
+        <item name="android:windowIsTranslucent">true</item>
+        <item name="android:windowAnimationStyle">@style/TopToBottomAnimation</item>
+    </style>
+
+    <!-- 底部弹出选择对话框动画-->
+    <style name="TopToBottomAnimation" parent="android:Animation.Dialog">
+        <item name="@android:windowEnterAnimation">@anim/window_enter_from_top</item>
+        <item name="@android:windowExitAnimation">@anim/window_exit_to_top</item>
+    </style>
+</resources>
