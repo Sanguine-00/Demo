@@ -1,4 +1,4 @@
-package com.example.sanguine.demo;
+package com.example.rxjavademo;
 
 import android.content.Context;
 import android.support.test.InstrumentationRegistry;
@@ -16,11 +16,11 @@ import static org.junit.Assert.*;
  */
 @RunWith(AndroidJUnit4.class)
 public class ExampleInstrumentedTest {
-    @LambdaTest
+    @Test
     public void useAppContext() throws Exception {
         // Context of the app under test.
         Context appContext = InstrumentationRegistry.getTargetContext();
 
-        assertEquals("com.example.sanguine.demo", appContext.getPackageName());
+        assertEquals("com.example.rxjavademo.test", appContext.getPackageName());
     }
 }

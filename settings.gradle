@@ -1,1 +1,1 @@
-include ':app', ':dialog', ':library'
+include ':app', ':dialog', ':library', ':myproxy', ':rxjavademo'

@@ -33,7 +33,8 @@ public class StartActivity extends Activity implements View.OnClickListener {
                 break;
             case R.id.tv_button:
 //                Intent intent = new Intent(this, WebViewActivity.class);
-                Intent intent = new Intent(this, MainActivity.class);
+//                Intent intent = new Intent(this, MainActivity.class);
+                Intent intent = new Intent(this, LambdaTestActivity.class);
                 startActivity(intent);
                 break;
         }

@@ -11,6 +11,8 @@
             <option value="$PROJECT_DIR$/app" />
             <option value="$PROJECT_DIR$/dialog" />
             <option value="$PROJECT_DIR$/library" />
+            <option value="$PROJECT_DIR$/myproxy" />
+            <option value="$PROJECT_DIR$/rxjavademo" />
           </set>
         </option>
         <option name="resolveModulePerSourceSet" value="false" />
