@@ -19,9 +19,6 @@ import com.github.mikephil.charting.highlight.Highlight;
 import com.github.mikephil.charting.listener.OnChartValueSelectedListener;
 import com.github.mikephil.charting.utils.ColorTemplate;
 import com.mobcb.statement.R;
-import com.mobcb.statement.mpchart.bean.Coordinate;
-import com.mobcb.statement.mpchart.bean.Bean;
-import com.mobcb.statement.mpchart.bean.ChartBean;
 
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -72,87 +69,87 @@ public class LineChartTestActivity extends FragmentActivity implements OnChartVa
 
     private void getData() {
 
-        Bean bean = new Bean();
-        bean.setName("会员");
-        bean.setType("会员");
-        List<ChartBean> list = new ArrayList<>();
-
-
-        ChartBean jin = new ChartBean();
-        jin.setxDesc("会员总数");
-
-        List<Coordinate> jinList = new ArrayList<>();
-        Coordinate jinCoordinateNum = new Coordinate();
-        jinCoordinateNum.setDesc("2018-03-27");
-        jinCoordinateNum.setyValue(40);
-        jinList.add(jinCoordinateNum);
-        Coordinate jinCoordinateCredit = new Coordinate();
-        jinCoordinateCredit.setDesc("2018-03-28");
-        jinCoordinateCredit.setyValue(150);
-        jinList.add(jinCoordinateCredit);
-
-        jin.setCoordinates(jinList);
-
-        ChartBean yin = new ChartBean();
-        yin.setxDesc("积分总数");
-
-        List<Coordinate> yinList = new ArrayList<>();
-
-        Coordinate yinCoordinateNum = new Coordinate();
-        yinCoordinateNum.setDesc("2018-03-27");
-        yinCoordinateNum.setyValue(60);
-        yinList.add(yinCoordinateNum);
-
-        Coordinate yinCoordinateCredit = new Coordinate();
-        yinCoordinateCredit.setDesc("2018-03-28");
-        yinCoordinateCredit.setyValue(300);
-        yinList.add(yinCoordinateCredit);
-
-        yin.setCoordinates(yinList);
-
-        list.add(jin);
-        list.add(yin);
-
-        bean.setList(list);
-
-
-        if (bean != null) {
-            List<ChartBean> list1 = bean.getList();
-            if (list1 != null && list1.size() > 0) {
-                List<LineDataSet> sets = new ArrayList<>();
-                for (int i = 0; i < list1.size(); i++) {
-                    ChartBean chartBean = list1.get(i);
-                    ArrayList<Entry> yVals = new ArrayList<Entry>();
-                    for (int j = 0; j < chartBean.getCoordinates().size(); j++) {
-                        Coordinate coordinate = chartBean.getCoordinates().get(j);
-                        yVals.add(new Entry(j, coordinate.getyValue(), coordinate.getDesc()));
-                    }
-                    LineDataSet set = new LineDataSet(yVals, chartBean.getxDesc());
-                    set.setAxisDependency(AxisDependency.LEFT);
-                    set.setColor(ColorTemplate.getHoloBlue());
-                    set.setCircleColor(Color.WHITE);
-                    set.setLineWidth(2f);
-                    set.setCircleRadius(3f);
-                    set.setFillAlpha(65);
-                    set.setFillColor(ColorTemplate.getHoloBlue());
-                    set.setHighLightColor(getColors(i).get(1));
-                    set.setDrawCircleHole(false);
-                    sets.add(set);
-                }
-
-                LineDataSet[] lineDataSets = new LineDataSet[sets.size()];
-                for (int i = 0; i < sets.size(); i++) {
-                    lineDataSets[i] = sets.get(i);
-                }
-                LineData data = new LineData(lineDataSets);
-                data.setValueTextColor(Color.WHITE);
-                data.setValueTextSize(9f);
-
-                // set data
-                mChart.setData(data);
-            }
-        }
-        setStyle(20, 2500f);
+//        MChart bean = new MChart();
+//        bean.setName("会员");
+//        bean.setType("会员");
+//        List<MChartData> list = new ArrayList<>();
+//
+//
+//        MChartData jin = new MChartData();
+//        jin.setxDesc("会员总数");
+//
+//        List<Coordinate> jinList = new ArrayList<>();
+//        Coordinate jinCoordinateNum = new Coordinate();
+//        jinCoordinateNum.setDesc("2018-03-27");
+//        jinCoordinateNum.setyValue(40);
+//        jinList.add(jinCoordinateNum);
+//        Coordinate jinCoordinateCredit = new Coordinate();
+//        jinCoordinateCredit.setDesc("2018-03-28");
+//        jinCoordinateCredit.setyValue(150);
+//        jinList.add(jinCoordinateCredit);
+//
+//        jin.setCoordinates(jinList);
+//
+//        MChartData yin = new MChartData();
+//        yin.setxDesc("积分总数");
+//
+//        List<Coordinate> yinList = new ArrayList<>();
+//
+//        Coordinate yinCoordinateNum = new Coordinate();
+//        yinCoordinateNum.setDesc("2018-03-27");
+//        yinCoordinateNum.setyValue(60);
+//        yinList.add(yinCoordinateNum);
+//
+//        Coordinate yinCoordinateCredit = new Coordinate();
+//        yinCoordinateCredit.setDesc("2018-03-28");
+//        yinCoordinateCredit.setyValue(300);
+//        yinList.add(yinCoordinateCredit);
+//
+//        yin.setCoordinates(yinList);
+//
+//        list.add(jin);
+//        list.add(yin);
+//
+//        bean.setChartDataList(list);
+//
+//
+//        if (bean != null) {
+//            List<MChartData> list1 = bean.getChartDataList();
+//            if (list1 != null && list1.size() > 0) {
+//                List<LineDataSet> sets = new ArrayList<>();
+//                for (int i = 0; i < list1.size(); i++) {
+//                    MChartData chartBean = list1.get(i);
+//                    ArrayList<Entry> yVals = new ArrayList<Entry>();
+//                    for (int j = 0; j < list1.size(); j++) {
+//                        MChartData coordinate = list1.get(j);
+//                        yVals.add(new Entry(j, coordinate.getyValue(), coordinate.getyDesc()));
+//                    }
+//                    LineDataSet set = new LineDataSet(yVals, chartBean.getxDesc());
+//                    set.setAxisDependency(AxisDependency.LEFT);
+//                    set.setColor(ColorTemplate.getHoloBlue());
+//                    set.setCircleColor(Color.WHITE);
+//                    set.setLineWidth(2f);
+//                    set.setCircleRadius(3f);
+//                    set.setFillAlpha(65);
+//                    set.setFillColor(ColorTemplate.getHoloBlue());
+//                    set.setHighLightColor(getColors(i).get(1));
+//                    set.setDrawCircleHole(false);
+//                    sets.add(set);
+//                }
+//
+//                LineDataSet[] lineDataSets = new LineDataSet[sets.size()];
+//                for (int i = 0; i < sets.size(); i++) {
+//                    lineDataSets[i] = sets.get(i);
+//                }
+//                LineData data = new LineData(lineDataSets);
+//                data.setValueTextColor(Color.WHITE);
+//                data.setValueTextSize(9f);
+//
+//                // set data
+//                mChart.setData(data);
+//            }
+//        }
+//        setStyle(20, 2500f);
     }
 
     private void setStyle(float maxX, float maxY) {

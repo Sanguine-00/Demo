@@ -1,6 +1,7 @@
 package com.mobcb.statement.mpchart.activity;
 
 import android.app.Activity;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.view.WindowManager;
 
@@ -19,9 +20,8 @@ import com.github.mikephil.charting.highlight.Highlight;
 import com.github.mikephil.charting.listener.OnChartValueSelectedListener;
 import com.github.mikephil.charting.utils.ColorTemplate;
 import com.mobcb.statement.R;
-import com.mobcb.statement.mpchart.bean.Coordinate;
-import com.mobcb.statement.mpchart.bean.Bean;
-import com.mobcb.statement.mpchart.bean.ChartBean;
+import com.mobcb.statement.mpchart.bean.MChart;
+import com.mobcb.statement.mpchart.bean.MChartData;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -56,136 +56,146 @@ public class BarChartTestActivity extends Activity implements OnChartValueSelect
 //        mChart.setMarker(mv); // Set the marker to the chart
 
 
-        Bean bean = new Bean();
-        bean.setName("会员");
-        bean.setType("会员");
-        List<ChartBean> list = new ArrayList<>();
+        List<MChart> chartList = new ArrayList<>();
 
+        MChart chart1 = new MChart();
+        chart1.setName("会员");
+        chart1.setType("member_count");
+        List<MChartData> list1 = new ArrayList<>();
+        MChartData jin1 = new MChartData();
+        jin1.setxDesc("金卡");
+        jin1.setyValue(100);
+        MChartData yin1 = new MChartData();
+        yin1.setxDesc("银卡");
+        yin1.setyValue(200);
+        MChartData tong1 = new MChartData();
+        tong1.setxDesc("铜卡");
+        tong1.setyValue(500);
+        list1.add(jin1);
+        list1.add(yin1);
+        list1.add(tong1);
+        chart1.setChartDataList(list1);
 
-        ChartBean jin = new ChartBean();
-        jin.setxDesc("金卡");
+        MChart chart2 = new MChart();
+        chart2.setName("积分");
+        chart2.setType("total_credit");
+        List<MChartData> list2 = new ArrayList<>();
+        MChartData jin2 = new MChartData();
+        jin2.setxDesc("金卡");
+        jin2.setyValue(1000);
+        MChartData yin2 = new MChartData();
+        yin2.setxDesc("银卡");
+        yin2.setyValue(800);
+        MChartData tong2 = new MChartData();
+        tong2.setxDesc("铜卡");
+        tong2.setyValue(600);
+        list2.add(jin2);
+        list2.add(yin2);
+        list2.add(tong2);
+        chart2.setChartDataList(list2);
 
-        List<Coordinate> jinList = new ArrayList<>();
-        Coordinate jinCoordinateNum = new Coordinate();
-        jinCoordinateNum.setDesc("数量");
-        jinCoordinateNum.setyValue(40);
-        jinList.add(jinCoordinateNum);
-        Coordinate jinCoordinateCredit = new Coordinate();
-        jinCoordinateCredit.setDesc("积分");
-        jinCoordinateCredit.setyValue(150);
-        jinList.add(jinCoordinateCredit);
+        chartList.add(chart1);
+        chartList.add(chart2);
 
-        jin.setCoordinates(jinList);
-
-        ChartBean yin = new ChartBean();
-        yin.setxDesc("银卡");
-
-        List<Coordinate> yinList = new ArrayList<>();
-
-        Coordinate yinCoordinateNum = new Coordinate();
-        yinCoordinateNum.setDesc("数量");
-        yinCoordinateNum.setyValue(60);
-        yinList.add(yinCoordinateNum);
-
-        Coordinate yinCoordinateCredit = new Coordinate();
-        yinCoordinateCredit.setDesc("积分");
-        yinCoordinateCredit.setyValue(300);
-        yinList.add(yinCoordinateCredit);
-
-        yin.setCoordinates(yinList);
-
-        list.add(jin);
-        list.add(yin);
-
-        bean.setList(list);
 
         float groupSpace = 0.08f;
         float barSpace = 0.03f; // x4 DataSet
         float barWidth = 0.4f; // x4 DataSet
 
-        ArrayList<BarDataSet> barDataSets = new ArrayList<>();
+        List<BarEntry> yVals1 = new ArrayList<BarEntry>();
+        List<BarEntry> yVals2 = new ArrayList<BarEntry>();
 
-        List<List<BarEntry>> yValues = new ArrayList<>();
-        List<String> yDesc = new ArrayList<>();
-        List<String> xDesc = new ArrayList<>();
-        List<List<Integer>> colors = new ArrayList<>();
+        List<MChartData> listOne = chartList.get(0).getChartDataList();
 
-        //先看每个x有几个柱子
-        ChartBean chartBean = list.get(0);
-        if (chartBean != null && chartBean.getCoordinates() != null && chartBean.getCoordinates().size() > 0) {
-            List<Coordinate> coordinates = chartBean.getCoordinates();
-            for (int i = 0; i < coordinates.size(); i++) {
-                Coordinate yValue = coordinates.get(i);
-                ArrayList<BarEntry> yVals = new ArrayList<BarEntry>();
-                yValues.add(yVals);
-                yDesc.add(yValue.getDesc());
-                colors.add(getColors(i));
-            }
+        for (int i = 0; i < listOne.size(); i++) {
+            yVals1.add(new BarEntry(i, chartList.get(0).getChartDataList().get(i).getyValue()));
+            yVals2.add(new BarEntry(i, chartList.get(1).getChartDataList().get(i).getyValue()));
         }
 
-        //再给柱子赋值,每个x有几个柱子,那么就有几个List<BarEntry>,所以一次循环搞不定
-        for (int j = 0; j < list.size(); j++) {
-            ChartBean chartBean1 = list.get(j);
-            if (chartBean1 != null) {
-                xDesc.add(chartBean1.getxDesc());
-                for (int i = 0; i < yValues.size(); i++) {
-                    List<BarEntry> yVals = yValues.get(i);
-                    yVals.add(new BarEntry(j, chartBean1.getCoordinates().get(i).getyValue()));
-                }
-            }
-        }
-//        List<BarEntry> yVals1 = new ArrayList<>();
-//        List<BarEntry> yVals2 = new ArrayList<>();
-////        for (int j = 0; j < list.size(); j++) {
-//            ChartBean coordinate1 = list.get(0);
-//            if (coordinate1 != null) {
-//                xDesc.add(coordinate1.getxDesc());
-//                yVals1.add(new BarEntry(1, coordinate1.getCoordinates().get(0).getyValue()));
-//                yVals2.add(new BarEntry(1, coordinate1.getCoordinates().get(1).getyValue()));
-//            }
-//            ChartBean coordinate2 = list.get(1);
-//            if (coordinate2 != null) {
-//                xDesc.add(coordinate2.getxDesc());
-//                yVals1.add(new BarEntry(2, coordinate2.getCoordinates().get(0).getyValue()));
-//                yVals2.add(new BarEntry(2, coordinate2.getCoordinates().get(1).getyValue()));
-//            }
-////        }
+        BarDataSet set1, set2;
 
-        //将柱子的值,每个x的柱子的描述,赋值给图表
-        for (int i = 0; i < yValues.size(); i++) {
-            BarDataSet barDataSet = new BarDataSet(yValues.get(i), yDesc.get(i));
-            barDataSet.setColor(colors.get(i).get(i));
-            barDataSets.add(barDataSet);
-        }
-
-//        BarDataSet barDataSet1 = new BarDataSet(yVals1, yDesc.get(0));
-//        barDataSet1.setColor(colors.get(0).get(0));
-//        BarDataSet barDataSet2 = new BarDataSet(yVals2, yDesc.get(1));
-//        barDataSet2.setColor(colors.get(0).get(1));
-
-
-        //如果已经有值,则重新设置数据
         if (mChart.getData() != null && mChart.getData().getDataSetCount() > 0) {
-            for (int i = 0; i < mChart.getData().getDataSetCount(); i++) {
-                if (i < barDataSets.size()) {
-                    ((BarDataSet) mChart.getData().getDataSetByIndex(i))
-                            .setValues(barDataSets.get(i).getValues());
-                }
-            }
+
+            set1 = (BarDataSet) mChart.getData().getDataSetByIndex(0);
+            set2 = (BarDataSet) mChart.getData().getDataSetByIndex(1);
+            set1.setValues(yVals1);
+            set2.setValues(yVals2);
             mChart.getData().notifyDataChanged();
             mChart.notifyDataSetChanged();
 
         } else {
-            //之前没有值,
             // create 4 DataSets
-            BarDataSet[] barDataSets1 = new BarDataSet[barDataSets.size()];
-            for (int i = 0; i < barDataSets.size(); i++) {
-                barDataSets1[i] = barDataSets.get(i);
-            }
-            BarData data = new BarData(barDataSets1);
-//            data.setValueFormatter(new LargeValueFormatter());
+            set1 = new BarDataSet(yVals1, "Company A");
+            set1.setColor(Color.rgb(104, 241, 175));
+            set2 = new BarDataSet(yVals2, "Company B");
+            set2.setColor(Color.rgb(164, 228, 251));
+
+            BarData data = new BarData(set1, set2);
+            data.setValueFormatter(new LargeValueFormatter());
+            //data.setValueTypeface(mTfLight);
+
             mChart.setData(data);
         }
+
+        List<String> xDesc = new ArrayList<>();
+
+        //先看每个x有几个柱子
+        List<MChartData> cFirst = chartList.get(0).getChartDataList();
+        if (cFirst != null && cFirst.size() > 0) {
+            for (int i = 0; i < cFirst.size(); i++) {
+                MChartData chartBean = cFirst.get(i);
+                xDesc.add(chartBean.getxDesc());
+            }
+        }
+
+//======================================================================================
+//        ArrayList<BarDataSet> barDataSets = new ArrayList<>();
+//
+//        List<List<BarEntry>> yValues = new ArrayList<>();
+//        List<String> yDesc = new ArrayList<>();
+
+//
+//        //再给柱子赋值,每个x有几个柱子,那么就有几个List<BarEntry>,所以一次循环搞不定
+//        for (int j = 0; j < c1.size(); j++) {
+//            MChartData chartBean = c1.get(j);
+//            if (chartBean != null) {
+//                xDesc.add(chartBean.getxDesc());
+//                for (int i = 0; i < yValues.size(); i++) {
+//                    List<BarEntry> yVals = yValues.get(i);
+//                    yVals.add(new BarEntry(j, chartBean.getyValue()));
+//                }
+//            }
+//        }
+//
+//        //将柱子的值,每个x的柱子的描述,赋值给图表
+//        for (int i = 0; i < yValues.size(); i++) {
+//            BarDataSet barDataSet = new BarDataSet(yValues.get(i), yDesc.get(i));
+//            barDataSet.setColor(colors.get(i).get(i));
+//            barDataSets.add(barDataSet);
+//        }
+//
+//        //如果已经有值,则重新设置数据
+//        if (mChart.getData() != null && mChart.getData().getDataSetCount() > 0) {
+//            for (int i = 0; i < mChart.getData().getDataSetCount(); i++) {
+//                if (i < barDataSets.size()) {
+//                    ((BarDataSet) mChart.getData().getDataSetByIndex(i))
+//                            .setValues(barDataSets.get(i).getValues());
+//                }
+//            }
+//            mChart.getData().notifyDataChanged();
+//            mChart.notifyDataSetChanged();
+//
+//        } else {
+//            //之前没有值,
+//            // create 4 DataSets
+//            BarDataSet[] barDataSets1 = new BarDataSet[barDataSets.size()];
+//            for (int i = 0; i < barDataSets.size(); i++) {
+//                barDataSets1[i] = barDataSets.get(i);
+//            }
+//            BarData data = new BarData(barDataSets1);
+////            data.setValueFormatter(new LargeValueFormatter());
+//            mChart.setData(data);
+//        }
 
         // specify the width each bar should have
         mChart.getBarData().setBarWidth(barWidth);
@@ -193,8 +203,6 @@ public class BarChartTestActivity extends Activity implements OnChartValueSelect
         // restrict the x-axis range
         mChart.getXAxis().setAxisMinimum(0);
 
-        // barData.getGroupWith(...) is a helper that calculates the width each group needs based on the provided parameters
-//        mChart.getXAxis().setAxisMaximum(0 + mChart.getBarData().getGroupWidth(groupSpace, barSpace) * 2);
         mChart.getXAxis().setAxisMaximum(5);
         mChart.groupBars(0, groupSpace, barSpace);
         mChart.invalidate();

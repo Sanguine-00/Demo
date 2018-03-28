@@ -5,27 +5,17 @@ import android.os.Bundle;
 import android.os.Parcelable;
 import android.support.v4.app.FragmentActivity;
 import android.util.Log;
-import android.view.Gravity;
 import android.view.View;
-import android.view.ViewGroup;
 import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.LinearLayout;
 
 import com.github.mikephil.charting.charts.PieChart;
-import com.github.mikephil.charting.data.PieData;
-import com.github.mikephil.charting.data.PieDataSet;
-import com.github.mikephil.charting.data.PieEntry;
-import com.github.mikephil.charting.formatter.PercentFormatter;
 import com.github.mikephil.charting.utils.ColorTemplate;
-import com.github.mikephil.charting.utils.MPPointF;
 import com.mobcb.statement.R;
 import com.mobcb.statement.mpchart.AuthHelper;
 import com.mobcb.statement.mpchart.FragmentManager;
 import com.mobcb.statement.mpchart.JsonUtils;
-import com.mobcb.statement.mpchart.bean.Coordinate;
-import com.mobcb.statement.mpchart.bean.Bean;
-import com.mobcb.statement.mpchart.bean.ChartBean;
 import com.mobcb.statement.mpchart.bean.MemberPieChartBean;
 import com.mobcb.statement.mpchart.bean.ResponseBean;
 import com.mobcb.statement.mpchart.fragment.AgePieChartFragment;
@@ -34,7 +24,6 @@ import com.mobcb.statement.mpchart.fragment.LevelPieChartFragment;
 import com.mobcb.statement.mpchart.service.MemberTrendService;
 
 import java.util.ArrayList;
-import java.util.List;
 
 import rx.Observable;
 import rx.Subscriber;
@@ -110,117 +99,117 @@ public class PieChartTestActivity extends FragmentActivity implements View.OnCli
     }
 
     private void setData() {
-        Bean bean = new Bean();
-        bean.setName("会员");
-        bean.setType("会员");
-        List<ChartBean> list = new ArrayList<>();
-
-
-        ChartBean jin = new ChartBean();
-        jin.setxDesc("会员等级");
-
-        List<Coordinate> jinList = new ArrayList<>();
-        Coordinate jinCoordinateNum = new Coordinate();
-        jinCoordinateNum.setDesc("初出茅庐");
-        jinCoordinateNum.setyValue(40);
-        jinList.add(jinCoordinateNum);
-        Coordinate jinCoordinateCredit = new Coordinate();
-        jinCoordinateCredit.setDesc("老司机");
-        jinCoordinateCredit.setyValue(60);
-        jinList.add(jinCoordinateCredit);
-
-        jin.setCoordinates(jinList);
-
-        ChartBean yin = new ChartBean();
-        yin.setxDesc("性别分布");
-
-        List<Coordinate> yinList = new ArrayList<>();
-
-        Coordinate yinCoordinateNum = new Coordinate();
-        yinCoordinateNum.setDesc("男");
-        yinCoordinateNum.setyValue(60);
-        yinList.add(yinCoordinateNum);
-
-        Coordinate yinCoordinateCredit = new Coordinate();
-        yinCoordinateCredit.setDesc("女");
-        yinCoordinateCredit.setyValue(300);
-        yinList.add(yinCoordinateCredit);
-
-        yin.setCoordinates(yinList);
-
-        list.add(jin);
-        list.add(yin);
-
-        bean.setList(list);
-
-
-        if (bean != null) {
-            List<ChartBean> list1 = bean.getList();
-            if (list1 != null && list1.size() > 0) {
-                List<PieDataSet> dataSets = new ArrayList<>();
-
-
-                for (int i = 0; i < list1.size(); i++) {
-                    ChartBean chartBean = list1.get(i);
-                    ArrayList<PieEntry> entries = new ArrayList<PieEntry>();
-                    for (int j = 0; j < chartBean.getCoordinates().size(); j++) {
-                        Coordinate coordinate = chartBean.getCoordinates().get(j);
-                        entries.add(new PieEntry(coordinate.getyValue(), coordinate.getDesc()));
-                    }
-                    PieDataSet dataSet = new PieDataSet(entries, chartBean.getxDesc());
-                    dataSet.setDrawIcons(false);
-                    dataSet.setSliceSpace(3f);
-                    dataSet.setIconsOffset(new MPPointF(0, 40));
-                    dataSet.setSelectionShift(5f);
-                    // add a lot of colors
-                    ArrayList<Integer> colors = getColors(i);
-                    if (colors != null) {
-                        dataSet.setColors(colors);
-                    }
-                    //dataSet.setSelectionShift(0f);
-                    dataSets.add(dataSet);
-
-                    LinearLayout.LayoutParams layoutParams = new LinearLayout.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT,
-                            ViewGroup.LayoutParams.WRAP_CONTENT);
-                    layoutParams.gravity = Gravity.CENTER;
-                    layoutParams.setMargins(10, 10, 10, 10);
-
-                    Button button = new Button(this);
-                    button.setText(chartBean.getxDesc());
-                    button.setLayoutParams(layoutParams);
-
-                    int finalI = i;
-                    button.setOnClickListener(new View.OnClickListener() {
-                        @Override
-                        public void onClick(View v) {
-                            PieData data = new PieData(dataSets.get(finalI));
-                            data.setValueFormatter(new PercentFormatter());
-                            data.setValueTextSize(11f);
-                            data.setValueTextColor(Color.WHITE);
-                            mChart.setData(data);
-
-                            // undo all highlights
-                            mChart.highlightValues(null);
-
-                            mChart.invalidate();
-                        }
-                    });
-                    content.addView(button);
-                }
-
-
-                PieData data = new PieData(dataSets.get(0));
-                data.setValueFormatter(new PercentFormatter());
-                data.setValueTextSize(11f);
-                data.setValueTextColor(Color.WHITE);
-                mChart.setData(data);
-
-                // undo all highlights
-                mChart.highlightValues(null);
-
-                mChart.invalidate();
-            }
-        }
+//        MChart bean = new MChart();
+//        bean.setName("会员");
+//        bean.setType("会员");
+//        List<MChartData> list = new ArrayList<>();
+//
+//
+//        MChartData jin = new MChartData();
+//        jin.setxDesc("会员等级");
+//
+//        List<Coordinate> jinList = new ArrayList<>();
+//        Coordinate jinCoordinateNum = new Coordinate();
+//        jinCoordinateNum.setDesc("初出茅庐");
+//        jinCoordinateNum.setyValue(40);
+//        jinList.add(jinCoordinateNum);
+//        Coordinate jinCoordinateCredit = new Coordinate();
+//        jinCoordinateCredit.setDesc("老司机");
+//        jinCoordinateCredit.setyValue(60);
+//        jinList.add(jinCoordinateCredit);
+//
+//        jin.setCoordinates(jinList);
+//
+//        MChartData yin = new MChartData();
+//        yin.setxDesc("性别分布");
+//
+//        List<Coordinate> yinList = new ArrayList<>();
+//
+//        Coordinate yinCoordinateNum = new Coordinate();
+//        yinCoordinateNum.setDesc("男");
+//        yinCoordinateNum.setyValue(60);
+//        yinList.add(yinCoordinateNum);
+//
+//        Coordinate yinCoordinateCredit = new Coordinate();
+//        yinCoordinateCredit.setDesc("女");
+//        yinCoordinateCredit.setyValue(300);
+//        yinList.add(yinCoordinateCredit);
+//
+//        yin.setCoordinates(yinList);
+//
+//        list.add(jin);
+//        list.add(yin);
+//
+//        bean.setChartDataList(list);
+//
+//
+//        if (bean != null) {
+//            List<MChartData> list1 = bean.getChartDataList();
+//            if (list1 != null && list1.size() > 0) {
+//                List<PieDataSet> dataSets = new ArrayList<>();
+//
+//
+//                for (int i = 0; i < list1.size(); i++) {
+//                    MChartData chartBean = list1.get(i);
+//                    ArrayList<PieEntry> entries = new ArrayList<PieEntry>();
+//                    for (int j = 0; j < chartBean.getCoordinates().size(); j++) {
+//                        Coordinate coordinate = chartBean.getCoordinates().get(j);
+//                        entries.add(new PieEntry(coordinate.getyValue(), coordinate.getDesc()));
+//                    }
+//                    PieDataSet dataSet = new PieDataSet(entries, chartBean.getxDesc());
+//                    dataSet.setDrawIcons(false);
+//                    dataSet.setSliceSpace(3f);
+//                    dataSet.setIconsOffset(new MPPointF(0, 40));
+//                    dataSet.setSelectionShift(5f);
+//                    // add a lot of colors
+//                    ArrayList<Integer> colors = getColors(i);
+//                    if (colors != null) {
+//                        dataSet.setColors(colors);
+//                    }
+//                    //dataSet.setSelectionShift(0f);
+//                    dataSets.add(dataSet);
+//
+//                    LinearLayout.LayoutParams layoutParams = new LinearLayout.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT,
+//                            ViewGroup.LayoutParams.WRAP_CONTENT);
+//                    layoutParams.gravity = Gravity.CENTER;
+//                    layoutParams.setMargins(10, 10, 10, 10);
+//
+//                    Button button = new Button(this);
+//                    button.setText(chartBean.getxDesc());
+//                    button.setLayoutParams(layoutParams);
+//
+//                    int finalI = i;
+//                    button.setOnClickListener(new View.OnClickListener() {
+//                        @Override
+//                        public void onClick(View v) {
+//                            PieData data = new PieData(dataSets.get(finalI));
+//                            data.setValueFormatter(new PercentFormatter());
+//                            data.setValueTextSize(11f);
+//                            data.setValueTextColor(Color.WHITE);
+//                            mChart.setData(data);
+//
+//                            // undo all highlights
+//                            mChart.highlightValues(null);
+//
+//                            mChart.invalidate();
+//                        }
+//                    });
+//                    content.addView(button);
+//                }
+//
+//
+//                PieData data = new PieData(dataSets.get(0));
+//                data.setValueFormatter(new PercentFormatter());
+//                data.setValueTextSize(11f);
+//                data.setValueTextColor(Color.WHITE);
+//                mChart.setData(data);
+//
+//                // undo all highlights
+//                mChart.highlightValues(null);
+//
+//                mChart.invalidate();
+//            }
+//        }
 
 
     }

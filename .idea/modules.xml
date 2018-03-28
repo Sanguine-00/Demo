@@ -3,12 +3,19 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/Demo.iml" filepath="$PROJECT_DIR$/Demo.iml" />
+      <module fileurl="file://E:\Demo\Demo.iml" filepath="E:\Demo\Demo.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
+      <module fileurl="file://E:\Demo\app\app.iml" filepath="E:\Demo\app\app.iml" />
       <module fileurl="file://$PROJECT_DIR$/dialog/dialog.iml" filepath="$PROJECT_DIR$/dialog/dialog.iml" />
+      <module fileurl="file://E:\Demo\dialog\dialog.iml" filepath="E:\Demo\dialog\dialog.iml" />
       <module fileurl="file://$PROJECT_DIR$/library/library.iml" filepath="$PROJECT_DIR$/library/library.iml" />
+      <module fileurl="file://E:\Demo\library\library.iml" filepath="E:\Demo\library\library.iml" />
       <module fileurl="file://$PROJECT_DIR$/myproxy/myproxy.iml" filepath="$PROJECT_DIR$/myproxy/myproxy.iml" />
+      <module fileurl="file://E:\Demo\myproxy\myproxy.iml" filepath="E:\Demo\myproxy\myproxy.iml" />
       <module fileurl="file://$PROJECT_DIR$/rxjavademo/rxjavademo.iml" filepath="$PROJECT_DIR$/rxjavademo/rxjavademo.iml" />
+      <module fileurl="file://E:\Demo\rxjavademo\rxjavademo.iml" filepath="E:\Demo\rxjavademo\rxjavademo.iml" />
       <module fileurl="file://$PROJECT_DIR$/statement/statement.iml" filepath="$PROJECT_DIR$/statement/statement.iml" />
+      <module fileurl="file://E:\Demo\statement\statement.iml" filepath="E:\Demo\statement\statement.iml" />
     </modules>
   </component>
 </project>
