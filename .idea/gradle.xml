@@ -13,6 +13,7 @@
             <option value="$PROJECT_DIR$/library" />
             <option value="$PROJECT_DIR$/myproxy" />
             <option value="$PROJECT_DIR$/rxjavademo" />
+            <option value="$PROJECT_DIR$/statement" />
           </set>
         </option>
         <option name="resolveModulePerSourceSet" value="false" />

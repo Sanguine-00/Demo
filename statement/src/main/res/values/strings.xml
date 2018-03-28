@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">Statement</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="statement_pie_chart_age">年龄</string>
+    <string name="statement_pie_chart_gender">性别</string>
+    <string name="statement_pie_chart_level">等级</string>
+</resources>

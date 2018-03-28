@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+
+    <ScrollView
+        android:id="@+id/statement_sv_pie_chart_left"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:fillViewport="true">
+
+        <LinearLayout
+            android:layout_width="30dp"
+            android:layout_height="match_parent"
+            android:layout_gravity="center"
+            android:layout_marginLeft="20dp"
+            android:gravity="center"
+            android:orientation="vertical">
+
+
+            <Button
+                android:id="@+id/statement_btn_pie_chart_age"
+                android:layout_width="15dp"
+                android:layout_height="wrap_content"
+                android:background="#ffffff"
+                android:text="@string/statement_pie_chart_age"
+                tools:text="你好" />
+
+            <Button
+                android:id="@+id/statement_btn_pie_chart_gender"
+                android:layout_width="15dp"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="10dp"
+                android:layout_marginTop="10dp"
+                android:background="#ffffff"
+                android:text="@string/statement_pie_chart_gender"
+                tools:text="你好" />
+
+            <Button
+                android:id="@+id/statement_btn_pie_chart_level"
+                android:layout_width="15dp"
+                android:layout_height="wrap_content"
+                android:background="#ffffff"
+                android:text="@string/statement_pie_chart_level"
+                tools:text="你好" />
+
+
+        </LinearLayout>
+
+
+    </ScrollView>
+
+
+    <LinearLayout
+        android:id="@+id/content"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_toRightOf="@+id/statement_sv_pie_chart_left"
+        android:gravity="center"
+        android:orientation="vertical" />
+</RelativeLayout>
