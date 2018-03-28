@@ -13,6 +13,14 @@ public class MChart {
     private String chartType; //以何种形式展示,line：折线图，bar：柱状图，pie：饼图
     private List<MChartData> chartDataList;
 
+    public String getTitle() {
+        return title;
+    }
+
+    public void setTitle(String title) {
+        this.title = title;
+    }
+
     public String getName() {
         return name;
     }

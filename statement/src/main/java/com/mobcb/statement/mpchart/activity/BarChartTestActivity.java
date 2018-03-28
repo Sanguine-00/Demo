@@ -43,7 +43,7 @@ public class BarChartTestActivity extends Activity implements OnChartValueSelect
 //        mChart.setDrawBorders(true);
 
         // scaling can now only be done on x- and y-axis separately
-        mChart.setPinchZoom(false);
+        mChart.setPinchZoom(true);
 
         mChart.setDrawBarShadow(false);
 
@@ -124,11 +124,13 @@ public class BarChartTestActivity extends Activity implements OnChartValueSelect
             mChart.notifyDataSetChanged();
 
         } else {
-            // create 4 DataSets
-            set1 = new BarDataSet(yVals1, "Company A");
-            set1.setColor(Color.rgb(104, 241, 175));
-            set2 = new BarDataSet(yVals2, "Company B");
-            set2.setColor(Color.rgb(164, 228, 251));
+            // create 2 DataSets
+            set1 = new BarDataSet(yVals1, chart1.getName());
+            //set1.setColor(Color.rgb(104, 241, 175));
+            set1.setColor(getColors(0).get(1));
+            set2 = new BarDataSet(yVals2, chart2.getName());
+            //set2.setColor(Color.rgb(164, 228, 251));
+            set2.setColor(getColors(1).get(1));
 
             BarData data = new BarData(set1, set2);
             data.setValueFormatter(new LargeValueFormatter());
@@ -203,7 +205,7 @@ public class BarChartTestActivity extends Activity implements OnChartValueSelect
         // restrict the x-axis range
         mChart.getXAxis().setAxisMinimum(0);
 
-        mChart.getXAxis().setAxisMaximum(5);
+        mChart.getXAxis().setAxisMaximum(3);
         mChart.groupBars(0, groupSpace, barSpace);
         mChart.invalidate();
 
