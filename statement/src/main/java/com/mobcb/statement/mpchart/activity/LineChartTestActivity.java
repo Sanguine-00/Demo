@@ -7,6 +7,7 @@ import android.util.Log;
 import android.view.WindowManager;
 
 import com.github.mikephil.charting.charts.LineChart;
+import com.github.mikephil.charting.components.AxisBase;
 import com.github.mikephil.charting.components.Legend;
 import com.github.mikephil.charting.components.Legend.LegendForm;
 import com.github.mikephil.charting.components.XAxis;
@@ -15,10 +16,13 @@ import com.github.mikephil.charting.components.YAxis.AxisDependency;
 import com.github.mikephil.charting.data.Entry;
 import com.github.mikephil.charting.data.LineData;
 import com.github.mikephil.charting.data.LineDataSet;
+import com.github.mikephil.charting.formatter.IAxisValueFormatter;
 import com.github.mikephil.charting.highlight.Highlight;
 import com.github.mikephil.charting.listener.OnChartValueSelectedListener;
 import com.github.mikephil.charting.utils.ColorTemplate;
 import com.mobcb.statement.R;
+import com.mobcb.statement.mpchart.bean.MChart;
+import com.mobcb.statement.mpchart.bean.MChartData;
 
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -67,89 +71,103 @@ public class LineChartTestActivity extends FragmentActivity implements OnChartVa
 
     }
 
+    ;
+
     private void getData() {
 
-//        MChart bean = new MChart();
-//        bean.setName("会员");
-//        bean.setType("会员");
-//        List<MChartData> list = new ArrayList<>();
-//
-//
-//        MChartData jin = new MChartData();
-//        jin.setxDesc("会员总数");
-//
-//        List<Coordinate> jinList = new ArrayList<>();
-//        Coordinate jinCoordinateNum = new Coordinate();
-//        jinCoordinateNum.setDesc("2018-03-27");
-//        jinCoordinateNum.setyValue(40);
-//        jinList.add(jinCoordinateNum);
-//        Coordinate jinCoordinateCredit = new Coordinate();
-//        jinCoordinateCredit.setDesc("2018-03-28");
-//        jinCoordinateCredit.setyValue(150);
-//        jinList.add(jinCoordinateCredit);
-//
-//        jin.setCoordinates(jinList);
-//
-//        MChartData yin = new MChartData();
-//        yin.setxDesc("积分总数");
-//
-//        List<Coordinate> yinList = new ArrayList<>();
-//
-//        Coordinate yinCoordinateNum = new Coordinate();
-//        yinCoordinateNum.setDesc("2018-03-27");
-//        yinCoordinateNum.setyValue(60);
-//        yinList.add(yinCoordinateNum);
-//
-//        Coordinate yinCoordinateCredit = new Coordinate();
-//        yinCoordinateCredit.setDesc("2018-03-28");
-//        yinCoordinateCredit.setyValue(300);
-//        yinList.add(yinCoordinateCredit);
-//
-//        yin.setCoordinates(yinList);
-//
-//        list.add(jin);
-//        list.add(yin);
-//
-//        bean.setChartDataList(list);
-//
-//
-//        if (bean != null) {
-//            List<MChartData> list1 = bean.getChartDataList();
-//            if (list1 != null && list1.size() > 0) {
-//                List<LineDataSet> sets = new ArrayList<>();
-//                for (int i = 0; i < list1.size(); i++) {
-//                    MChartData chartBean = list1.get(i);
-//                    ArrayList<Entry> yVals = new ArrayList<Entry>();
-//                    for (int j = 0; j < list1.size(); j++) {
-//                        MChartData coordinate = list1.get(j);
-//                        yVals.add(new Entry(j, coordinate.getyValue(), coordinate.getyDesc()));
-//                    }
-//                    LineDataSet set = new LineDataSet(yVals, chartBean.getxDesc());
-//                    set.setAxisDependency(AxisDependency.LEFT);
-//                    set.setColor(ColorTemplate.getHoloBlue());
-//                    set.setCircleColor(Color.WHITE);
-//                    set.setLineWidth(2f);
-//                    set.setCircleRadius(3f);
-//                    set.setFillAlpha(65);
-//                    set.setFillColor(ColorTemplate.getHoloBlue());
-//                    set.setHighLightColor(getColors(i).get(1));
-//                    set.setDrawCircleHole(false);
-//                    sets.add(set);
-//                }
-//
-//                LineDataSet[] lineDataSets = new LineDataSet[sets.size()];
-//                for (int i = 0; i < sets.size(); i++) {
-//                    lineDataSets[i] = sets.get(i);
-//                }
-//                LineData data = new LineData(lineDataSets);
-//                data.setValueTextColor(Color.WHITE);
-//                data.setValueTextSize(9f);
-//
-//                // set data
-//                mChart.setData(data);
-//            }
-//        }
-//        setStyle(20, 2500f);
+        List<MChart> chartList = new ArrayList<>();
+
+        MChart chart1 = new MChart();
+        chart1.setName("会员");
+        chart1.setType("member_count");
+        List<MChartData> list1 = new ArrayList<>();
+        MChartData jin1 = new MChartData();
+        jin1.setxDesc("2018-03-27");
+        jin1.setyValue(100);
+        jin1.setxValue(0);
+        MChartData yin1 = new MChartData();
+        yin1.setxDesc("2018-03-28");
+        yin1.setyValue(200);
+        yin1.setxValue(1);
+        MChartData tong1 = new MChartData();
+        tong1.setxDesc("2018-03-29");
+        tong1.setyValue(500);
+        list1.add(jin1);
+        list1.add(yin1);
+        list1.add(tong1);
+        tong1.setxValue(2);
+        chart1.setChartDataList(list1);
+
+        MChart chart2 = new MChart();
+        chart2.setName("积分");
+        chart2.setType("total_credit");
+        List<MChartData> list2 = new ArrayList<>();
+        MChartData jin2 = new MChartData();
+        jin2.setxDesc("2018-03-27");
+        jin2.setyValue(1000);
+        jin2.setxValue(0);
+        MChartData yin2 = new MChartData();
+        yin2.setxDesc("2018-03-28");
+        yin2.setyValue(800);
+        yin2.setxValue(1);
+        MChartData tong2 = new MChartData();
+        tong2.setxDesc("2018-03-29");
+        tong2.setyValue(600);
+        list2.add(jin2);
+        list2.add(yin2);
+        list2.add(tong2);
+        tong2.setxValue(2);
+        chart2.setChartDataList(list2);
+
+        chartList.add(chart1);
+        chartList.add(chart2);
+
+        float maxY = 0;
+        float maxX = 0;
+
+
+        if (chartList != null && chartList.size() > 0) {
+            List<LineDataSet> sets = new ArrayList<>();
+            for (int i = 0; i < chartList.size(); i++) {
+                MChart mChart = chartList.get(i);
+                ArrayList<Entry> yVals = new ArrayList<Entry>();
+                if (mChart != null) {
+                    List<MChartData> chartDataList = mChart.getChartDataList();
+                    if (chartDataList != null && chartDataList.size() > 0) {
+                        maxX = chartDataList.size() > maxX ? chartDataList.size() : maxX;
+                        for (int j = 0; j < chartDataList.size(); j++) {
+                            MChartData mChartData = chartDataList.get(j);
+                            if (mChartData != null) {
+                                xDesc.add(mChartData.getxDesc());
+                                maxY = mChartData.getyValue() > maxY ? mChartData.getyValue() : maxY;
+                                yVals.add(new Entry(mChartData.getxValue(), mChartData.getyValue(), mChartData.getxDesc()));
+                            }
+                        }
+                        LineDataSet set = new LineDataSet(yVals, mChart.getName());
+                        set.setAxisDependency(AxisDependency.LEFT);
+                        set.setColor(getColors(i).get(i));
+                        set.setCircleColor(Color.WHITE);
+                        set.setLineWidth(2f);
+                        set.setCircleRadius(3f);
+                        set.setFillAlpha(65);
+                        set.setFillColor(ColorTemplate.getHoloBlue());
+                        set.setHighLightColor(getColors(i).get(1));
+                        set.setDrawCircleHole(false);
+                        sets.add(set);
+                    }
+                }
+            }
+            LineDataSet[] lineDataSets = new LineDataSet[sets.size()];
+            for (int i = 0; i < sets.size(); i++) {
+                lineDataSets[i] = sets.get(i);
+            }
+            LineData data = new LineData(lineDataSets);
+            data.setValueTextColor(Color.WHITE);
+            data.setValueTextSize(9f);
+            // set data
+            mChart.setData(data);
+            setStyle(maxX, maxY);
+        }
     }
 
     private void setStyle(float maxX, float maxY) {
@@ -175,18 +193,18 @@ public class LineChartTestActivity extends FragmentActivity implements OnChartVa
         xAxis.setDrawLabels(true);
         xAxis.setDrawGridLines(false);
         xAxis.setDrawAxisLine(false);
-//        xAxis.setValueFormatter(new IAxisValueFormatter() {
-//            @Override
-//            public String getFormattedValue(float value, AxisBase axis) {
-//                try {
-//                    axis.get
-//                    return yVals.get((int) value).getData().toString();
-//                } catch (Exception e) {
-//                    e.printStackTrace();
-//                }
-//                return null;
-//            }
-//        });
+        xAxis.setValueFormatter(new IAxisValueFormatter() {
+            @Override
+            public String getFormattedValue(float value, AxisBase axis) {
+                Log.d(TAG, "getFormattedValue: value=" + value);
+                try {
+                    return ((LineDataSet)mChart.getLineData().getDataSetByIndex(0)).getValues().get((int) value).getData().toString();
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+                return String.valueOf(value);
+            }
+        });
         xAxis.setAxisMaximum(maxX);
 
 
