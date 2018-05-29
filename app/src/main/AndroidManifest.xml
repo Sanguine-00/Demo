@@ -24,12 +24,12 @@
     <uses-permission android:name="android.permission.CAMERA" />
     <uses-permission android:name="android.permission.MOUNT_UNMOUNT_FILESYSTEMS" />
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.READ_PHONE_STATE" />
 
     <!-- Android8.0安装apk权限 -->
     <uses-permission android:name="android.permission.REQUEST_INSTALL_PACKAGES" />
 
     <application
-
         android:name=".application.MyApplication"
         android:allowBackup="true"
         android:hardwareAccelerated="true"
@@ -57,13 +57,17 @@
         <activity android:name=".StartActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
         <activity
             android:name=".LambdaTestActivity"
             android:label="@string/title_activity_lambda_test"
-            android:theme="@style/AppTheme"></activity>
+            android:theme="@style/AppTheme" />
+        <activity android:name=".ModelActivity" />
+        <activity android:name=".DrawableTestActivity" />
+        <activity android:name=".ShapeTestActivity"></activity>
     </application>
 
 </manifest>

@@ -1,1 +1,1 @@
-include ':app', ':dialog', ':library', ':myproxy', ':rxjavademo', ':statement'
+include ':app', ':dialog', ':library', ':myproxy', ':rxjavademo', ':statement', ':aphidFlipViewLibrary'

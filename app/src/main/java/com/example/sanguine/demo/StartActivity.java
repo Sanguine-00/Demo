@@ -6,11 +6,9 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 
-import com.mobcb.statement.mpchart.activity.BarChartTestActivity;
 import com.mobcb.statement.mpchart.activity.LineChartTestActivity;
+import com.mobcb.statement.mpchart.activity.NormalChartActivity;
 import com.mobcb.statement.mpchart.activity.PieChartTestActivity;
-import com.mobcb.statement.mpchart.activity.member.MemberLineChartActivity;
-import com.mobcb.statement.mpchart.activity.member.MemberPieChartActivity;
 
 
 public class StartActivity extends Activity implements View.OnClickListener {
@@ -67,11 +65,11 @@ public class StartActivity extends Activity implements View.OnClickListener {
 //                Intent intent = new Intent(this, WebViewActivity.class);
 //                Intent intent = new Intent(this, MainActivity.class);
 //                Intent intent = new Intent(this, LambdaTestActivity.class);
-                intent = new Intent(this, WebViewActivity.class);
+                intent = new Intent(this, MainActivity.class);
                 startActivity(intent);
                 break;
             case R.id.tv_button2:
-                intent = new Intent(this, MemberLineChartActivity.class);
+                intent = new Intent(this, ShapeTestActivity.class);
                 startActivity(intent);
                 break;
             case R.id.tv_button3:
@@ -83,7 +81,7 @@ public class StartActivity extends Activity implements View.OnClickListener {
                 startActivity(intent);
                 break;
             case R.id.tv_button5:
-                intent = new Intent(this, BarChartTestActivity.class);
+                intent = new Intent(this, NormalChartActivity.class);
                 startActivity(intent);
                 break;
         }

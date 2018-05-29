@@ -7,6 +7,7 @@ import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.PixelFormat;
 import android.hardware.Camera;
+import android.net.http.SslError;
 import android.os.Bundle;
 import android.os.Handler;
 import android.util.Log;
@@ -18,6 +19,7 @@ import android.view.ViewGroup;
 import android.view.WindowManager;
 import android.view.animation.Animation;
 import android.view.animation.Transformation;
+import android.webkit.ValueCallback;
 import android.widget.Button;
 import android.widget.RelativeLayout;
 
@@ -29,6 +31,8 @@ import org.xwalk.core.XWalkActivity;
 import org.xwalk.core.XWalkResourceClient;
 import org.xwalk.core.XWalkUIClient;
 import org.xwalk.core.XWalkView;
+import org.xwalk.core.XWalkWebResourceRequest;
+import org.xwalk.core.XWalkWebResourceResponse;
 
 import java.io.IOException;
 import java.util.List;
@@ -51,7 +55,7 @@ public class MainActivity extends XWalkActivity implements View.OnClickListener,
 
     @Override
     protected void onXWalkReady() {
-        mXWalkView.load("https://www.baidu.com", null);
+        mXWalkView.load("http://220.163.112.134:6713/mag/hls/7c7c19d095c349b9be3b5aed36e7dcc8/1/live.m3u8", null);
         mXWalkView.setBackgroundColor(Color.WHITE);
 //        setZOrderMediaOverlay(mXWalkView);
 //        mXWalkView.setBackgroundColor(Color.RED);
@@ -107,6 +111,24 @@ public class MainActivity extends XWalkActivity implements View.OnClickListener,
         });
 
         mXWalkView.setResourceClient(new XWalkResourceClient(mXWalkView) {
+            @Override
+            public void onReceivedLoadError(XWalkView view, int errorCode, String description, String failingUrl) {
+                super.onReceivedLoadError(view, errorCode, description, failingUrl);
+                Log.e(TAG, "onReceivedLoadError:errorCode=" + errorCode + ",description=" + description + ",failingUrl" + failingUrl);
+            }
+
+            @Override
+            public void onReceivedResponseHeaders(XWalkView view, XWalkWebResourceRequest request, XWalkWebResourceResponse response) {
+                super.onReceivedResponseHeaders(view, request, response);
+                Log.e(TAG, "onReceivedResponseHeaders" + "request=" + request + ",response=" + response);
+            }
+
+            @Override
+            public void onReceivedSslError(XWalkView view, ValueCallback<Boolean> callback, SslError error) {
+                super.onReceivedSslError(view, callback, error);
+                Log.e(TAG, "onReceivedSslError" + "callback=" + callback + ",error=" + error);
+
+            }
         });
 
 

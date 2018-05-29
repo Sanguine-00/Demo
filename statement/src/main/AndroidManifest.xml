@@ -19,12 +19,17 @@
         <activity
             android:name=".mpchart.activity.member.MemberLineChartActivity"
             android:screenOrientation="landscape" />
-        <activity android:name=".mpchart.activity.BarChartTestActivity"
-            android:screenOrientation="landscape"/>
-        <activity android:name=".mpchart.activity.LineChartTestActivity"
-            android:screenOrientation="landscape"/>
-        <activity android:name=".mpchart.activity.PieChartTestActivity"
-            android:screenOrientation="landscape"/>
+        <activity
+            android:name=".mpchart.activity.BarChartTestActivity"
+            android:screenOrientation="landscape" />
+        <activity
+            android:name=".mpchart.activity.LineChartTestActivity"
+            android:screenOrientation="landscape" />
+        <activity
+            android:name=".mpchart.activity.PieChartTestActivity"
+            android:screenOrientation="landscape" />
+        <activity android:name=".mpchart.activity.NormalChartActivity" />
+        <activity android:name=".mpchart.activity.CombinedChartActivity"></activity>
     </application>
 
 </manifest>

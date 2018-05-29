@@ -1,0 +1,34 @@
+{
+    "logs": [
+        {
+            "outputFile": "F:\\Demo\\Demo\\aphidFlipViewLibrary\\build\\intermediates\\res\\merged\\androidTest\\debug\\values\\values.xml",
+            "map": [
+                {
+                    "source": "F:\\Demo\\Demo\\aphidFlipViewLibrary\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
+                    "from": {
+                        "startLines": "10,11",
+                        "startColumns": "4,4",
+                        "startOffsets": "421,471",
+                        "endColumns": "49,57",
+                        "endOffsets": "466,524"
+                    }
+                }
+            ]
+        },
+        {
+            "outputFile": "F:\\Demo\\Demo\\aphidFlipViewLibrary\\build\\intermediates\\incremental\\mergeDebugAndroidTestResources\\merged.dir\\values\\values.xml",
+            "map": [
+                {
+                    "source": "F:\\Demo\\Demo\\aphidFlipViewLibrary\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
+                    "from": {
+                        "startLines": "10,11",
+                        "startColumns": "4,4",
+                        "startOffsets": "421,471",
+                        "endColumns": "49,57",
+                        "endOffsets": "466,524"
+                    }
+                }
+            ]
+        }
+    ]
+}
